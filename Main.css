@@ -39,7 +39,7 @@ p {
     height: 640px;
     display: flex;
     flex-wrap: wrap;
-    perspective: 1000px;
+    
 }
 
 .memory-card {
@@ -47,10 +47,13 @@ p {
     height: calc(33.333% - 10px);
     margin: 5px;
     position: relative;
-    transform: scale(1);
+    /* Add perspective directly to the card's transform */
+    transform: perspective(1000px) rotateY(0deg); 
     transform-style: preserve-3d;
     transition: transform 0.5s;
     cursor: pointer;
+    /* Ensure it pivots exactly in the middle */
+    transform-origin: center center; 
 }
 
 .memory-card:active {
@@ -59,7 +62,8 @@ p {
 }
 
 .memory-card.flip {
-    transform: rotateY(180deg);
+    /* Keep the perspective when flipping */
+    transform: perspective(1000px) rotateY(180deg);
 }
 
 .front-face,
