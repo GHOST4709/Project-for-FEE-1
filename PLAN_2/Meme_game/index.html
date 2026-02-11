@@ -7,12 +7,29 @@
 </head>
 <body>
 
-<video id="bgVideo" muted playsinline></video>
-<audio id="bgAudio"></audio>
+<video id="bgVideo" autoplay muted loop></video>
 
 <h1>Meme Memory Game 😂</h1>
 
+<div class="controls">
+    <select id="difficulty">
+        <option value="6"> Difficult </option>
+        <option value="8"> Difficult Pro</option>
+        <option value="10">Difficult Pro MAX</option>
+    </select>
+    <button onclick="startGame()">Start Game</button>
+    <button onclick="resetGame()">Reset Game</button>
+</div>
+
+<div class="info">
+    ⏱ Time: <span id="time">0</span>s |
+    ⭐ Score: <span id="score">0</span>
+</div>
+
 <div class="game-container" id="gameBoard"></div>
+
+<audio id="matchSound" src="C:\Users\Abhishek Sharma\My Frist Project\Project For FEE-1\PLAN_2\sounds\Bachan.mp3"></audio>
+<audio id="wrongSound" src="sounds/wrong.mp3"></audio>
 
 <script src="script.js"></script>
 </body>
