@@ -1,0 +1,126 @@
+body {
+    margin: 0;
+    background: #111;
+    color: white;
+    text-align: center;
+    font-family: Arial;
+}
+
+h1 {
+    margin: 15px;
+}
+
+.controls, .info {
+    margin: 10px;
+}
+
+#bgVideo {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.3;
+}
+
+.game-container {
+    display: grid;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.card {
+    width: 80px;
+    height: 80px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+}
+
+.card.flip .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    backface-visibility: hidden;
+}
+
+.card-front {
+    background: #444;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+}
+
+.card-back img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+button {
+    padding: 6px 12px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    background: #ff4757;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #ff6b81;
+}
+
+
+/* -------------------------------MEDIA_QUEUE--------------------------------- */
+
+/* TABLET */
+@media (max-width: 1024px) {
+    .card {
+        width: 65px;
+        height: 65px;
+    }
+    .game-container {
+        gap: 8px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .card {
+        width: 55px;
+        height: 55px;
+    }
+    .game-container {
+        gap: 6px;
+    }
+    .controls select,
+    .controls button {
+        font-size: 14px;
+        padding: 5px 8px;
+    }
+    .info {
+        font-size: 14px;
+    }
+}
+
+
