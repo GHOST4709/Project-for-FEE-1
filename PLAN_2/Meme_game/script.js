@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6ab2e56aab8e74a3c5b95da639766fa6c6e4cb4b
 const memeSet = [
     { img: "images/AAG.gif", video: "C:\Users\Abhishek Sharma\My Frist Project\Project For FEE-1\PLAN_2\sounds\Bachan.mp3" },
     { img: "2.jpg", video: "2.mp4" },
@@ -38,7 +41,10 @@ let score = 0;
 let time = 0;
 let timerInterval;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6ab2e56aab8e74a3c5b95da639766fa6c6e4cb4b
 function startGame() {
     board.innerHTML = "";
     score = 0;
@@ -67,7 +73,10 @@ function startGame() {
     cards.forEach(data => createCard(data));
 }
 
+<<<<<<< HEAD
 // Card Data function call
+=======
+>>>>>>> 6ab2e56aab8e74a3c5b95da639766fa6c6e4cb4b
 function createCard(data) {
     const card = document.createElement("div");
     card.classList.add("card");
@@ -85,7 +94,10 @@ function createCard(data) {
     board.appendChild(card);
 }
 
+<<<<<<< HEAD
 //----------------------------------Card Data vibe fix--------------------------------------------
+=======
+>>>>>>> 6ab2e56aab8e74a3c5b95da639766fa6c6e4cb4b
 function flipCard(card, data) {
 
     // Prevent clicking while board locked
@@ -114,9 +126,14 @@ function flipCard(card, data) {
     lockBoard = true;
 
     checkMatch();
+<<<<<<< HEAD
 }//------------------------------------------------------------------------------
 
 // Check for match match match
+=======
+}
+
+>>>>>>> 6ab2e56aab8e74a3c5b95da639766fa6c6e4cb4b
 
 function checkMatch() {
 
@@ -124,6 +141,7 @@ function checkMatch() {
         matchSound.currentTime = 0;
         matchSound.play().catch(err => console.log("Audio blocked:", err));
         score += 10;
+<<<<<<< HEAD
     
         firstCard.card.classList.add("matched");
         secondCard.card.classList.add("matched");
@@ -131,6 +149,16 @@ function checkMatch() {
         firstCard.card.style.pointerEvents = "none";
         secondCard.card.style.pointerEvents = "none";
         
+=======
+       
+        firstCard.card.classList.add("matched");
+        secondCard.card.classList.add("matched");
+
+     
+        firstCard.card.style.pointerEvents = "none";
+        secondCard.card.style.pointerEvents = "none";
+          
+>>>>>>> 6ab2e56aab8e74a3c5b95da639766fa6c6e4cb4b
         playMeme(firstCard.data.video);
         resetTurn();
 
@@ -147,7 +175,10 @@ function checkMatch() {
     updateUI();
 }
 
+<<<<<<< HEAD
 // Plays vids from vid src
+=======
+>>>>>>> 6ab2e56aab8e74a3c5b95da639766fa6c6e4cb4b
 function playMeme(video) {
     bgVideo.src = video;
     bgVideo.play();
@@ -161,8 +192,11 @@ function resetTurn() {
     [firstCard, secondCard, lockBoard] = [null, null, false];
 }
 
+<<<<<<< HEAD
 
 // Resets the Gamme and back to its original vals
+=======
+>>>>>>> 6ab2e56aab8e74a3c5b95da639766fa6c6e4cb4b
 function resetGame() {
     clearInterval(timerInterval);
     score = 0;
