@@ -3,24 +3,24 @@
 // =======
 // >>>>>>> 6ab2e56aab8e74a3c5b95da639766fa6c6e4cb4b
 const memeSet = [
-    { img: "images/AAG.gif", video: "C:\Users\Abhishek Sharma\My Frist Project\Project For FEE-1\PLAN_2\sounds\Bachan.mp3" },
-    { img: "images/aura.gif", video: "2.mp4" },
-    { img: "images/Baby.gif", video: "3.mp4" },
-    { img: "images/boat.gif", video: "4.mp4" },
-    { img: "images/cid.gif", video: "5.mp4" },
-    { img: "images/coffin.gif", video: "6.mp4" },
-    { img: "images/crying.gif", video: "7.mp4" },
-    { img: "images/dap.gif", video: "8.mp4" },
-    { img: "images/girl.gif", video: "9.mp4" },
-    { img: "images/guy.gif", video: "10.mp4" },
-    { img: "images/lmao.gif", video: "11.mp4" },
-    { img: "images/mygif.gif", video: "12.mp4" },
-    { img: "images/people.gif", video: "13.mp4" },
-    { img: "images/suspecios.gif", video: "14.mp4" },
-    { img: "images/white.gif", video: "15.mp4" },
-    { img: "images/AAG.gif", video: "16.mp4" },
-    { img: "images/AAG.gif", video: "17.mp4" },
-    { img: "images/AAG.gif", video: "18.mp4" },
+    { img: "images/AAG.gif", audio: "sounds/Bachan.mp3" },
+    { img: "images/aura.gif", audio: "2.mp4" },
+    { img: "images/Baby.gif", audio: "3.mp4" },
+    { img: "images/boat.gif", audio: "4.mp4" },
+    { img: "images/cid.gif", audio: "5.mp4" },
+    { img: "images/coffin.gif", audio: "6.mp4" },
+    { img: "images/crying.gif", audio: "7.mp4" },
+    { img: "images/dap.gif", audio: "8.mp4" },
+    { img: "images/girl.gif", audio: "9.mp4" },
+    { img: "images/guy.gif", audio: "10.mp4" },
+    { img: "images/lmao.gif", audio: "11.mp4" },
+    { img: "images/mygif.gif", audio: "12.mp4" },
+    { img: "images/people.gif", audio: "13.mp4" },
+    { img: "images/suspecios.gif", audio: "14.mp4" },
+    { img: "images/white.gif", audio: "15.mp4" },
+    { img: "images/AAG.gif", audio: "16.mp4" },
+    { img: "images/AAG.gif", audio: "17.mp4" },
+    { img: "images/AAG.gif", audio: "18.mp4" },
 ];
 // const memeSet = [
 //     { img: "images/meme1.jpg", video: "videos/meme1.mp4" },
@@ -32,7 +32,9 @@ const memeSet = [
 // ];
 
 const board = document.getElementById("gameBoard");
-const bgVideo = document.getElementById("bgVideo");
+
+// const bgVideo = document.getElementById("bgVideo");
+
 const matchSound = document.getElementById("matchSound");
 const wrongSound = document.getElementById("wrongSound");
 
@@ -40,7 +42,7 @@ let firstCard, secondCard, lockBoard;
 let score = 0;
 let time = 0;
 let timerInterval;
-
+let memeAudio;
 
 function startGame() {
     board.innerHTML = "";
@@ -147,7 +149,7 @@ function checkMatch() {
         firstCard.card.style.pointerEvents = "none";
         secondCard.card.style.pointerEvents = "none";
 
-        playMeme(firstCard.data.video);
+        playMeme(firstCard.data.audio);
         resetTurn();
 
     } 
@@ -165,10 +167,23 @@ function checkMatch() {
 
 // Plays vids from vid src
 
-function playMeme(video) {
-    bgVideo.src = video;
-    bgVideo.play();
+// function playMeme(audioSrc) {
+//     const audio = new Audio(audioSrc);
+//     audio.play().catch(err => console.log("Audio blocked:", err));
+// }
+function playMeme(audioSrc) {
+    if (memeAudio) {
+        memeAudio.pause();
+    }
+    memeAudio = new Audio(audioSrc);
+    memeAudio.currentTime = 0;
+    memeAudio.play().catch(err => console.log("Audio blocked:", err));
 }
+
+// function playMeme(video) {
+//     bgVideo.src = video;
+//     bgVideo.play();
+// }
 
 function updateUI() {
     document.getElementById("score").textContent = score;
@@ -195,8 +210,8 @@ function resetGame() {
 
     board.innerHTML = "";
 
-    bgVideo.pause();
-    bgVideo.src = "";
+    // bgVideo.pause();
+    // bgVideo.src = "";
 
     matchSound.pause();
     wrongSound.pause();
