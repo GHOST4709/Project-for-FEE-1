@@ -35,14 +35,18 @@ const board = document.getElementById("gameBoard");
 
 // const bgVideo = document.getElementById("bgVideo");
 
-const matchSound = document.getElementById("matchSound");
-const wrongSound = document.getElementById("wrongSound");
 
 let firstCard, secondCard, lockBoard;
 let score = 0;
 let time = 0;
 let timerInterval;
 let memeAudio;
+
+
+
+
+//-----------------------HERE EVERYTHING STARTS!!! ! !---------------------------
+
 
 function startGame() {
     board.innerHTML = "";
@@ -72,6 +76,12 @@ function startGame() {
     cards.forEach(data => createCard(data));
 }
 
+
+
+
+
+
+
 // Card Data function call
 
 function createCard(data) {
@@ -90,6 +100,13 @@ function createCard(data) {
     card.addEventListener("click", () => flipCard(card, data));
     board.appendChild(card);
 }
+
+
+
+
+
+
+
 
 
 //----------------------------------Card Data vibe fix--------------------------------------------
@@ -124,53 +141,49 @@ function flipCard(card, data) {
     checkMatch();
 }//------------------------------------------------------------------------------
 
-// Check for match match match
 
+
+
+
+
+// Check for match match match
 
 function checkMatch() {
 
     if (firstCard.data.img === secondCard.data.img) {
-        matchSound.currentTime = 0;
-        matchSound.play().catch(err => console.log("Audio blocked:", err));
+        
         score += 10;
 
-    
         firstCard.card.classList.add("matched");
         secondCard.card.classList.add("matched");
 
         firstCard.card.style.pointerEvents = "none";
         secondCard.card.style.pointerEvents = "none";
         
-    
         firstCard.card.classList.add("matched");
         secondCard.card.classList.add("matched");
 
-    
         firstCard.card.style.pointerEvents = "none";
         secondCard.card.style.pointerEvents = "none";
 
         playMeme(firstCard.data.audio);
         resetTurn();
-
     } 
     else {
-        wrongSound.play();
-
         setTimeout(() => {
             firstCard.card.classList.remove("flip");
             secondCard.card.classList.remove("flip");
             resetTurn();
         }, 900);
     }
+    
     updateUI();
+    
 }
 
-// Plays vids from vid src
+//---------------------------Plays vids from vid src---------------------------
 
-// function playMeme(audioSrc) {
-//     const audio = new Audio(audioSrc);
-//     audio.play().catch(err => console.log("Audio blocked:", err));
-// }
+
 function playMeme(audioSrc) {
     if (memeAudio) {
         memeAudio.pause();
@@ -180,22 +193,16 @@ function playMeme(audioSrc) {
     memeAudio.play().catch(err => console.log("Audio blocked:", err));
 }
 
-// function playMeme(video) {
-//     bgVideo.src = video;
-//     bgVideo.play();
-// }
-
 function updateUI() {
     document.getElementById("score").textContent = score;
 }
-
 function resetTurn() {
     [firstCard, secondCard, lockBoard] = [null, null, false];
 }
 
 
 
-// Resets the Gamme and back to its original vals
+//--------------------------Resets the Gamme and back to its original vals--------------------------
 
 function resetGame() {
     clearInterval(timerInterval);
@@ -210,11 +217,4 @@ function resetGame() {
 
     board.innerHTML = "";
 
-    // bgVideo.pause();
-    // bgVideo.src = "";
-
-    matchSound.pause();
-    wrongSound.pause();
-    matchSound.currentTime = 0;
-    wrongSound.currentTime = 0;
 }
