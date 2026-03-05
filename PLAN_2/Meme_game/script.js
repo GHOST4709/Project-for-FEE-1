@@ -18,9 +18,12 @@ const memeSet = [
     { img: "images/people.gif", audio: "13.mp4" },
     { img: "images/suspecios.gif", audio: "14.mp4" },
     { img: "images/white.gif", audio: "15.mp4" },
-    { img: "images/AAG.gif", audio: "16.mp4" },
-    { img: "images/AAG.gif", audio: "17.mp4" },
-    { img: "images/AAG.gif", audio: "18.mp4" },
+    { img: "images/arjun.gif", audio: "16.mp4" },
+    { img: "images/deku.gif", audio: "17.mp4" },
+    { img: "images/files.gif", audio: "18.mp4" },
+    { img: "images/hakla.gif", audio: "19.mp4" },
+    { img: "images/hug.gif", audio: "20.mp4" },
+    { img: "images/miss.gif", audio: "21.mp4" }
 ];
 // const memeSet = [
 //     { img: "images/meme1.jpg", video: "videos/meme1.mp4" },
