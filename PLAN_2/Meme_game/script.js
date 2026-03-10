@@ -5,7 +5,7 @@
 const memeSet = [
     { img: "images/AAG.gif", audio: "sounds/Bachan.mp3" },
     { img: "images/aura.gif", audio: "2.mp4" },
-    { img: "images/Baby.gif", audio: "3.mp4" },
+    { img: "images/Baby.gif", audio: "sounds/baby.mp3" },
     { img: "images/boat.gif", audio: "sounds/aura.mp3" },
     { img: "images/cid.gif", audio: "5.mp4" },
     { img: "images/coffin.gif", audio: "6.mp4" },
@@ -19,11 +19,10 @@ const memeSet = [
     { img: "images/suspecios.gif", audio: "sounds/sus.mp3" },
     { img: "images/white.gif", audio: "15.mp4" },
     { img: "images/arjun.gif", audio: "sounds/arjun.mp3" },
-    { img: "images/deku.gif", audio: "17.mp4" },
+    { img: "images/deku.gif", audio: "sounds/all_might.mp3" },
     { img: "images/files.gif", audio: "sounds/filez.mp3" },
     { img: "images/hakla.gif", audio: "19.mp4" },
-    { img: "images/hug.gif", audio: "20.mp4" },
-    { img: "images/miss.gif", audio: "21.mp4" }
+    { img: "images/giga.gif", audio: "sounds/gigachad.mp3" },
 ];
 // const memeSet = [
 //     { img: "images/meme1.jpg", video: "videos/meme1.mp4" },
