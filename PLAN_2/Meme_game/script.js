@@ -4,7 +4,6 @@
 // >>>>>>> 6ab2e56aab8e74a3c5b95da639766fa6c6e4cb4b
 const memeSet = [
     { img: "images/AAG.gif", audio: "sounds/Bachan.mp3" },
-    { img: "images/aura.gif", audio: "NO_SOUND" },
     { img: "images/Baby.gif", audio: "sounds/baby.mp3" },
     { img: "images/boat.gif", audio: "sounds/aura.mp3" },
     { img: "images/cid.gif", audio: "sounds/ACP.mp3" },
@@ -17,7 +16,7 @@ const memeSet = [
     { img: "images/mygif.gif", audio: "sounds/troll.mp3" },
     { img: "images/people.gif", audio: "sounds/people.mp3" },
     { img: "images/suspecios.gif", audio: "sounds/sus.mp3" },
-    { img: "images/nigga.gif", audio: "sounds/niggga.mp3" },
+    { img: "images/nigga.jpg", audio: "sounds/niggga.mp3" },     
     { img: "images/arjun.gif", audio: "sounds/arjun.mp3" },
     { img: "images/deku.gif", audio: "sounds/all_might.mp3" },
     { img: "images/files.gif", audio: "sounds/filez.mp3" },
@@ -26,6 +25,8 @@ const memeSet = [
     { img: "images/thala.gif", audio: "sounds/thala.mp3" },
     { img: "images/RickRoll.gif", audio: "sounds/RickRoll.mp3" },
     { img: "images/brainrot.png", audio: "sounds/brainrot.mp3" },
+    { img: "images/dexter.gif", audio: "sounds/dexter-meme.mp3" },
+    { img: "images/FAA.gif", audio: "sounds/faaah.mp3" },
 ];
 // const memeSet = [
 //     { img: "images/meme1.jpg", video: "videos/meme1.mp4" },
