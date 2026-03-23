@@ -122,7 +122,7 @@ function flipCard(card, data) {
     // Prevent clicking while board locked
     if (lockBoard) return;
 
-    // 🔹 If clicking same card again → deselect
+    // If clicking same card again → deselect
     if (firstCard && card === firstCard.card) {
         card.classList.remove("flip");
         firstCard = null;
@@ -160,12 +160,6 @@ function checkMatch() {
         
         score += 10;
 
-        firstCard.card.classList.add("matched");
-        secondCard.card.classList.add("matched");
-
-        firstCard.card.style.pointerEvents = "none";
-        secondCard.card.style.pointerEvents = "none";
-        
         firstCard.card.classList.add("matched");
         secondCard.card.classList.add("matched");
 
