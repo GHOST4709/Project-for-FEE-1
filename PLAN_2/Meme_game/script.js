@@ -64,7 +64,7 @@ function startGame() {
     clearInterval(timerInterval);
     timerInterval = setInterval(() => {
         time++;
-        document.getElementById("time").textContent = time;
+        document.getElementById("time").textContent = time; // first increase then update 
     }, 1000);
 
     const size = document.getElementById("difficulty").value;
@@ -76,7 +76,7 @@ function startGame() {
         cards.push(memeSet[i % memeSet.length]);
     }
 
-    cards = [...cards, ...cards].sort(() => Math.random() - 0.5);
+    cards = [...cards, ...cards].sort(() => Math.random() - 0.5); // created a copy to compare the cards array
     board.style.gridTemplateColumns = `repeat(${size}, 80px)`;
 
     cards.forEach(data => createCard(data));
@@ -88,7 +88,7 @@ function startGame() {
 
 
 
-// Card Data function call
+// Card Data function call (Using DOM it creates/renders the cards to play the game)
 
 function createCard(data) {
     const card = document.createElement("div");
@@ -115,8 +115,14 @@ function createCard(data) {
 
 
 
-//----------------------------------Card Data vibe fix--------------------------------------------
-
+//----------------------------------flip Card Data fix--------------------------------------------
+// What does this funtion do?
+// Prevent clicking if board is locked
+// Prevent clicking same card again
+// Flip the card
+// Store first card
+// Store second card
+// 
 function flipCard(card, data) {
 
     // Prevent clicking while board locked
@@ -158,7 +164,7 @@ function checkMatch() {
 
     if (firstCard.data.img === secondCard.data.img) {
         
-        score += 10;
+        score += 10; // chnage it in the future cuz this is for starters
 
         firstCard.card.classList.add("matched");
         secondCard.card.classList.add("matched");
@@ -174,7 +180,7 @@ function checkMatch() {
             firstCard.card.classList.remove("flip");
             secondCard.card.classList.remove("flip");
             resetTurn();
-        }, 900);
+        }, 900); // breif card show
     }
     
     updateUI();
@@ -188,7 +194,7 @@ function playMeme(audioSrc) {
     if (memeAudio) {
         memeAudio.pause();
     }
-    memeAudio = new Audio(audioSrc);
+    memeAudio = new Audio(audioSrc); // creates object of sound
     memeAudio.currentTime = 0;
     memeAudio.play().catch(err => console.log("Audio blocked:", err));
 }
