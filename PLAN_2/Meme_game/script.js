@@ -122,7 +122,7 @@ function createCard(data) {
 // Flip the card
 // Store first card
 // Store second card
-// 
+// QUALITY OF LIFE IMPROVEMENT!!
 function flipCard(card, data) {
 
     // Prevent clicking while board locked
