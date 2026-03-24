@@ -173,6 +173,7 @@ function checkMatch() {
         secondCard.card.style.pointerEvents = "none";
 
         playMeme(firstCard.data.audio);
+        
         resetTurn();
     } 
     else {
@@ -199,9 +200,13 @@ function playMeme(audioSrc) {
     memeAudio.play().catch(err => console.log("Audio blocked:", err));
 }
 
+
+
 function updateUI() {
     document.getElementById("score").textContent = score;
 }
+
+
 function resetTurn() {
     [firstCard, secondCard, lockBoard] = [null, null, false];
 }
