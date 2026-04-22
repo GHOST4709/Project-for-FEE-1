@@ -181,7 +181,7 @@ function checkMatch() {
             firstCard.card.classList.remove("flip");
             secondCard.card.classList.remove("flip");
             resetTurn();
-        }, 900); // breif card show
+        }, 900); // breif card show if not matched then un-flip
     }
     
     updateUI();
