@@ -1,4 +1,4 @@
-const wordList = ['SIGMA', 'SKIBIDI', 'FRONTEND', 'GAMING', 'ARCH', 'FINESHYT', ''];
+const wordList = ['SIGMA', 'SKIBIDI', 'FRONTEND', 'GAMING', 'ARCH', 'FINESHYT', 'TEA', 'GOAT', 'LOWKEY', 'HIGHKEY', ''];
 let currentWord = '';
 let guessed = [];
 let mistakes = 0;
