@@ -227,5 +227,4 @@ function resetGame() {
     document.getElementById("time").textContent = 0;
 
     board.innerHTML = "";
-
-}
+}     
