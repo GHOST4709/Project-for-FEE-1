@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcade Hub - Home</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+    <div class="main-layout">
+        <nav class="glass-nav">
+            <div class="logo">Gen-Z Gaming <span>Hub</span></div>
+            <div class="user-controls">
+                <span id="welcome-text">Loading...</span>
+                <button class="logout-btn" onclick="logout()">Log Out</button>
+            </div>
+        </nav>
+
+        <header class="glass-header">
+            <h2>Welcome to the Chill Zone 🧊</h2>
+            <div class="meme-container">
+                <p id="daily-meme">"Loading today's drop..."</p>
+            </div>
+        </header>
+
+        <main class="game-grid">
+            <a href="../Games/TickTacToe/Index.html" class="game-card">
+                <div class="card-icon">❌⭕</div>
+                <h3>Tic Tac Toe</h3>
+                <p>The classic showdown.</p>
+            </a>
+
+            <a href="../Games/TheHangMan/Index1.html" class="game-card">
+                <div class="card-icon">🔤</div>
+                <h3>Hangman</h3>
+                <p>Guess the word, survive the drop.</p>
+            </a>
+
+            <a href="../Games/RockPaperScissors/Index2.html" class="game-card">
+                <div class="card-icon">✊✋✌️</div>
+                <h3>Rock Paper Scissors</h3>
+                <p>Test your RNG against the bot.</p>
+            </a>
+
+            <a href="../Games/MemeMemoryGame/index.html" class="game-card">
+                <div class="card-icon">🧠</div>
+                <h3>Meme Memory</h3>
+                <p>Match the culture.</p>
+            </a>
+
+            <a href="#" class="game-card locked">
+                <div class="card-icon">♟️</div>
+                <h3>Chess (Pro)</h3>
+                <p>Coming Soon - API Powered</p>
+            </a>
+        </main>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
