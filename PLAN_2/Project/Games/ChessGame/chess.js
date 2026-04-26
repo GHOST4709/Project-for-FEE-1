@@ -84,9 +84,9 @@ function updateStatus() {
     let moveColor = (game.turn() === 'w') ? 'White' : 'Black';
 
     if (game.in_checkmate()) {
-        statusHTML = `Game over, ${moveColor} is in checkmate. 💀`;
+        statusHTML = `Game over, ${moveColor} checkmate. 💀`;
     } else if (game.in_draw()) {
-        statusHTML = 'Game over, drawn position 🤝';
+        statusHTML = 'Game over, StaleMate 🤝';
     } else {
         statusHTML = `${moveColor} to move`;
         if (game.in_check()) {
