@@ -34,7 +34,7 @@ function onDrop(source, target) {
     }
 }
 
-// Fetches the best move from the Stockfish API
+//Stockfish API
 async function makeComputerMove() {
     try {
         const fen = game.fen();
@@ -74,7 +74,6 @@ async function makeComputerMove() {
     updateStatus();
 }
 
-// Update the board position after the piece snap animation
 function onSnapEnd() {
     board.position(game.fen());
 }
@@ -99,7 +98,6 @@ function updateStatus() {
 
 // Board configuration
 let config = {
-    // THIS IS THE NEW LINE: It tells the board where to fetch the piece images
     pieceTheme: 'https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png',
     
     draggable: true,

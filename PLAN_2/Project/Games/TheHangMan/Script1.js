@@ -1,4 +1,4 @@
-const wordList = ['SIGMA', 'SKIBIDI', 'FRONTEND', 'GAMING', 'ARCH', 'FINESHYT', 'TEA', 'GOAT', 'LOWKEY', 'HIGHKEY', ''];
+const wordList = ['SIGMA', 'SKIBIDI', 'FRONTEND', 'GAMING', 'ARCH', 'FINESHYT', 'TEA', 'GOAT', 'LOWKEY', 'HIGHKEY', 'SLAY'];
 let currentWord = '';
 let guessed = [];
 let mistakes = 0;
@@ -12,7 +12,7 @@ function initGame() {
     document.getElementById('status').innerText = `Guesses left: ${maxMistakes}`;
     document.getElementById('status').style.color = '#a0aec0'; // Reset color
     
-    // Hide all stickman parts on reset
+    // Hides Stickman parts
     for (let i = 1; i <= 6; i++) {
         document.getElementById(`part-${i}`).style.display = 'none';
     }
@@ -63,7 +63,7 @@ function makeGuess(letter, btn) {
             document.getElementById('status').innerText = "Game Over! 💀";
             document.getElementById('status').style.color = '#ff6b6b';
             
-            // Turn the stickman red on game over
+            // WHEN gAME oVER
             document.getElementById('figure').setAttribute('stroke', '#ff6b6b');
             
             disableAll();

@@ -1,4 +1,4 @@
-// 1. Check Authentication on Page Load
+//Check AUTHENTICATION
 window.onload = function() {
     const currentUser = localStorage.getItem('currentUser');
     if (!currentUser) {
@@ -9,13 +9,13 @@ window.onload = function() {
     loadDailyDrop();
 };
 
-// 2. Handle Logout
+// LOGOUT
 function logout() {
     localStorage.removeItem('currentUser');
     window.location.href = '../Login/login.html';
 }
 
-// 3.Memes & Quotes
+//Quotes On Display
 const subtleMemes = [
     "It’s not a bug, it’s just a soon to be Feature.",
     "Lag is my only real enemy. 📶",
