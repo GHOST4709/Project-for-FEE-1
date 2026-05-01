@@ -19,7 +19,7 @@ function onDrop(source, target) {
     let move = game.move({
         from: source,
         to: target,
-        promotion: 'q' // Always promote to a queen for simplicity
+        promotion: 'q' // Promote to the strongest(Queen)
     });
 
     // If illegal move, snap piece back
