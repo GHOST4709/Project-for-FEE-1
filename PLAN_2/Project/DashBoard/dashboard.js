@@ -31,7 +31,10 @@ const subtleMemes = [
 function loadDailyDrop() {
     const memeElement = document.getElementById('daily-meme');
     const randomMeme = subtleMemes[Math.floor(Math.random() * subtleMemes.length)];
-    memeElement.innerText = randomMeme;
+    // memeElement.innerText = randomMeme;
+    setTimeout(()=>{
+        memeElement.innerText = randomMeme;
+    },1500);
 }
 
 
