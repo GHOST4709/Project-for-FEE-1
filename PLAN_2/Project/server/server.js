@@ -48,14 +48,20 @@ const PORT = 8000;
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Project Root DR
-const PUBLIC_DIR = path.join(__dirname, '..');
+const PUBLIC_DIR = path.join(__dirname, '..','public');
 
 // The Server Bigins Here-------------------------------
 
 const server = http.createServer((req, res) => {
     const urlObj = new URL(req.url, `http://${req.headers.host}`);
     
-    if ((urlObj.pathname.startsWith("/api")) && req.method === "GET") {
+    let pathname = decodeURIComponent(urlObj.pathname);
+    
+    if ((pathname.startsWith("/api")) && req.method === "GET") {
+        
+        res.writeHead(200, { "Content-Type": "application/json" });
+        return res.end(JSON.stringify({ message: "API is working!" }));
+        
         // const filePath = path.join(__dirname, '../Login/login.html');
         // fs.readFile(filePath, (err, content) => {
         //     if (err) {
@@ -66,22 +72,26 @@ const server = http.createServer((req, res) => {
         //         res.end(content);
         //     }
         // });
-        res.setHeader(200, { "Content-Type": "application/json" });
-        return res.end(JSON.stringify({ message: "API is working!" }));
+        
     } 
-    if ((urlObj.pathname.startsWith('/') || urlObj.pathname.startsWith('/login')) && req.method === "GET") {
+    
+    if ((pathname === '/' || pathname === '/login') && req.method === "GET") {
+        
+        res.writeHead(302, { 'Location': '/Login/login.html' });
+        return res.end();
+        
+        // pathname = '/Login/login.html';
+        
         // res.writeHead(200, {
         //     "Content-Type": "application/json",
         //     "Access-Control-Allow-Origin": "*",
         //     "Access-Control-Allow-Methods": "GET"
         // });
-        urlObj.pathname = '/Login/login.html';
         // res.end();
     } 
     
     // The Absolute Path for the Fetching 
-    const filePath = path.join(PUBLIC_DIR, urlObj.pathname);
-    
+    const filePath = path.join(PUBLIC_DIR, pathname);
     
     
     // Security Check to Prevent directory traversal(Vibe)  (Comment If Not Needed in the Forther)
@@ -118,10 +128,27 @@ const server = http.createServer((req, res) => {
     //         res.end(content, 'utf-8');
     //     }
     // });
+    console.log("Attempting to load:", filePath);
     sendResponses(res, filePath);
 });
 
 server.listen(PORT, () => {
     console.log(`The Server is Running on PORT ${PORT}`);
     console.log("http://localhost:8000");
+    console.log("-------------------------------------------------");
+    
+    // --- THE RADAR TRICK ---
+    // This tells Node to scan your Login folder and print EXACTLY what it sees.
+    try {
+        const loginFolderPath = path.join(PUBLIC_DIR, 'Login');
+        const files = fs.readdirSync(loginFolderPath);
+        console.log("🔍 Node.js scanned your 'Login' folder and found these files:");
+        console.log(files);
+    } catch (e) {
+        console.log("❌ Node.js cannot find the 'Login' folder. Is it spelled correctly?");
+        console.log(path.join(PUBLIC_DIR, 'Login'));
+    }
+    
+    console.log("-------------------------------------------------");
+    
 });
