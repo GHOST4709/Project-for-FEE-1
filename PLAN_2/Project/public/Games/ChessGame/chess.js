@@ -30,7 +30,7 @@ function onDrop(source, target) {
     // If game is not over, trigger the API bot to make a move
     if (!game.game_over()) {
         statusEl.innerText = "Computer is thinking... 🤖";
-        window.setTimeout(makeComputerMove, 250);
+        window.setTimeout(makeComputerMove, 270);
     }
 }
 
@@ -84,7 +84,7 @@ function updateStatus() {
     let moveColor = (game.turn() === 'w') ? 'White' : 'Black';
 
     if (game.in_checkmate()) {
-        statusHTML = `Game over, ${moveColor} checkmate. 💀`;
+        statusHTML = `Game over, ${moveColor} checkmated. 💀`;
     } else if (game.in_draw()) {
         statusHTML = 'Game over, StaleMate 🤝';
     } else {
