@@ -1,5 +1,7 @@
-import { error } from 'node:console';
-import http, { get } from 'node:http' 
+import http from 'node:http';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import sendResponses from './utils/sendResponses.js'
 import getContentType from './utils/getContentType.js';
 const PORT = 8000;
@@ -45,17 +47,21 @@ const PORT = 8000;
 // })
 
 // THis is to reconstruct dirName for ES_Modules 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Project Root DR
-const PUBLIC_DIR = path.join(__dirname, '..');
+const PUBLIC_DIR = path.join(__dirname, '..','public');
 
 // The Server Bigins Here-------------------------------
 
 const server = http.createServer((req, res) => {
     const urlObj = new URL(req.url, `http://${req.headers.host}`);
     
-    if ((urlObj.pathname.startsWith("/api")) && req.method === "GET") {
+    let pathname = decodeURIComponent(urlObj.pathname)
+    
+    
+    if ((pathname.startsWith("/api")) && req.method === "GET") {
         // const filePath = path.join(__dirname, '../Login/login.html');
         // fs.readFile(filePath, (err, content) => {
         //     if (err) {
@@ -69,14 +75,14 @@ const server = http.createServer((req, res) => {
         res.writeHead(200, { "Content-Type": "application/json" });
         return res.end(JSON.stringify({ message: "API is working!" }));
     } 
-    if ((urlObj.pathname.startsWith('/') || urlObj.pathname.startsWith('/login')) && req.method === "GET") {
+    if ((pathname === '/' || pathname === '/login') && req.method === "GET") {
         // res.writeHead(200, {
         //     "Content-Type": "application/json",
         //     "Access-Control-Allow-Origin": "*",
         //     "Access-Control-Allow-Methods": "GET"
         // });
-        urlObj.pathname = '/Login/login.html';
-        // res.end();
+        res.writeHead(302, { 'Location': '/Login/login.html' });
+        return res.end();
     } 
     
     // The Absolute Path for the Fetching 
