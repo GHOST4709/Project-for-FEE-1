@@ -1,154 +1,44 @@
-import http from 'node:http';
-import fs from 'node:fs';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-import getContentType from './utils/getContentType.js';
-import sendResponses from './utils/sendResponses.js';
+import { error } from 'node:console';
+import http, { get } from 'node:http' 
+
 const PORT = 8000;
 
-// const server = http.createServer(async (req,res)=>{
-    
-//     const urlObj = new URL(req.url, `http://${req.headers.host}`)
-    
-//     if(urlObj.pathname.startsWith('/api') && req.method === "GET" ){
-//         res.setHeader("Content-Type", "application/json");
-//         res.setHeader('Access-Control-Allow-Origin', '*')
-//         res.setHeader('Access-Control-Allow-Methods', 'GET')
-//         const filePath = path.join(__dirname,'../Login/login.html');
-//             fs.readFile(filePath, (err, content) => {
-//                 if (err) {
-//                     res.writeHead(500, { "Content-Type": "text/plain" });
-//                     res.end("Server Error: Could not read the HTML file.");
-//                 } else {
-//                     res.writeHead(200, { "Content-Type": "text/html" });
-//                     res.end(content);
-//                 }
-//             });
-//         res.statusCode = 200;
-//         res.end();
-//     }
-//     else{
-//         res.setHeader("Content-Type", "application/json");
-//         res.statusCode = 404
-//         const message = {
-//             error: "Not Found",
-//             message: "This request route does not exist."
-//         }
-//         res.end(JSON.stringify(message))
-//     }
-// });
 
-
-// server.listen(PORT,()=>{
-//     console.log(`The Server is Running on PORT ${PORT}`);
-//     console.log("http://localhost:8000");
-// })
-
-// THis is to reconstruct dirName for ES_Modules 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
-// Project Root DR
-const PUBLIC_DIR = path.join(__dirname, '..','public');
-
-// The Server Bigins Here-------------------------------
-
-const server = http.createServer((req, res) => {
-    const urlObj = new URL(req.url, `http://${req.headers.host}`);
+const server = http.createServer(async (req,res)=>{
     
-    let pathname = decodeURIComponent(urlObj.pathname);
+    const urlObj = new URL(req.url, `http://${req.headers.host}`)
     
-    if ((pathname.startsWith("/api")) && req.method === "GET") {
-        
-        res.writeHead(200, { "Content-Type": "application/json" });
-        return res.end(JSON.stringify({ message: "API is working!" }));
-        
-        // const filePath = path.join(__dirname, '../Login/login.html');
-        // fs.readFile(filePath, (err, content) => {
-        //     if (err) {
-        //         res.writeHead(500, { "Content-Type": "text/plain" });
-        //         res.end("Server Error: Could not read the HTML file.");
-        //     } else {
-        //         res.writeHead(200, { "Content-Type": "text/html" });
-        //         res.end(content);
-        //     }
-        // });
-        
-    } 
-    
-    if ((pathname === '/' || pathname === '/login') && req.method === "GET") {
-        
-        res.writeHead(302, { 'Location': '/Login/login.html' });
-        return res.end();
-        
-        // pathname = '/Login/login.html';
-        
-        // res.writeHead(200, {
-        //     "Content-Type": "application/json",
-        //     "Access-Control-Allow-Origin": "*",
-        //     "Access-Control-Allow-Methods": "GET"
-        // });
-        // res.end();
-    } 
-    
-    // The Absolute Path for the Fetching 
-    const filePath = path.join(PUBLIC_DIR, pathname);
-    
-    
-    // Security Check to Prevent directory traversal(Vibe)  (Comment If Not Needed in the Forther)
-    if(!filePath.startsWith(PUBLIC_DIR)) {
-        // res.writeHead(404, { "Content-Type": "application/json" });
-        // res.end(JSON.stringify({
-        //     error: "Not Found",
-        //     message: "This request route does not exist."
-        // }));
-        res.writeHead(403, { "Content-Type": "text/plain" });
-        return res.end("403 Forbidden");
+    if(urlObj.pathname.startsWith('/api') && req.method === "GET" ){
+        res.setHeader("Content-Type", "application/json");
+        res.setHeader('Access-Control-Allow-Origin', '*')
+        res.setHeader('Access-Control-Allow-Methods', 'GET')
+        const filePath = path.join(__dirname,'../Login/login.html');
+            fs.readFile(filePath, (err, content) => {
+                if (err) {
+                    res.writeHead(500, { "Content-Type": "text/plain" });
+                    res.end("Server Error: Could not read the HTML file.");
+                } else {
+                    res.writeHead(200, { "Content-Type": "text/html" });
+                    res.end(content);
+                }
+            });
+        res.statusCode = 200;
+        res.end();
     }
-    
-    
-    // Fs File Read Currently Vibe Fix and Look for Better Options on StackOverflow
-    // fs.readFile(filePath, (err, content) => {
-    //     if (err) {
-    //         if (err.code === 'ENOENT') {
-    //             res.writeHead(404, { "Content-Type": "application/json" });
-    //             res.end(JSON.stringify({ error: "Not Found", message: "File does not exist." }));
-    //         } else {
-    //             res.writeHead(500, { "Content-Type": "text/plain" });
-    //             res.end(`Server Error: ${err.code}`);
-    //         }
-    //     } else {
-    //         // 2. Extract the extension from the file path
-    //         const extname = path.extname(filePath);
-            
-    //         // 3. Pass ONLY the extracted extension to your utility function
-    //         const contentType = getContentType(extname);
-            
-    //         // Send the response with the correct Content-Type
-    //         res.writeHead(200, { "Content-Type": contentType });
-    //         res.end(content, 'utf-8');
-    //     }
-    // });
-    console.log("Attempting to load:", filePath);
-    sendResponses(res, filePath);
-});
+    else{
+        res.setHeader("Content-Type", "application/json");
+        res.statusCode = 404
+        const message = {
+            error: "Not Found",
+            message: "This request route does not exist."
+        }
+        res.end(JSON.stringify(message))
+    }
+});                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
 
-server.listen(PORT, () => {
+
+server.listen(PORT,()=>{
     console.log(`The Server is Running on PORT ${PORT}`);
     console.log("http://localhost:8000");
-    console.log("-------------------------------------------------");
-    
-    // --- THE RADAR TRICK ---
-    // This tells Node to scan your Login folder and print EXACTLY what it sees.
-    try {
-        const loginFolderPath = path.join(PUBLIC_DIR, 'Login');
-        const files = fs.readdirSync(loginFolderPath);
-        console.log("🔍 Node.js scanned your 'Login' folder and found these files:");
-        console.log(files);
-    } catch (e) {
-        console.log("❌ Node.js cannot find the 'Login' folder. Is it spelled correctly?");
-        console.log(path.join(PUBLIC_DIR, 'Login'));
-    }
-    
-    console.log("-------------------------------------------------");
-    
-});
+})
+
