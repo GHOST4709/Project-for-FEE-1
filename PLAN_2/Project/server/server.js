@@ -1,41 +1,42 @@
 import { error } from 'node:console';
 import http, { get } from 'node:http' 
-
+import sendResponses from './utils/sendResponses.js'
+import getContentType from './utils/getContentType.js';
 const PORT = 8000;
 
 
 
-const server = http.createServer(async (req,res)=>{
+// const server = http.createServer(async (req,res)=>{
     
-    const urlObj = new URL(req.url, `http://${req.headers.host}`)
+//     const urlObj = new URL(req.url, `http://${req.headers.host}`)
     
-    if(urlObj.pathname.startsWith('/api') && req.method === "GET" ){
-        res.setHeader("Content-Type", "application/json");
-        res.setHeader('Access-Control-Allow-Origin', '*')
-        res.setHeader('Access-Control-Allow-Methods', 'GET')
-        const filePath = path.join(__dirname,'../Login/login.html');
-            fs.readFile(filePath, (err, content) => {
-                if (err) {
-                    res.writeHead(500, { "Content-Type": "text/plain" });
-                    res.end("Server Error: Could not read the HTML file.");
-                } else {
-                    res.writeHead(200, { "Content-Type": "text/html" });
-                    res.end(content);
-                }
-            });
-        res.statusCode = 200;
-        res.end();
-    }
-    else{
-        res.setHeader("Content-Type", "application/json");
-        res.statusCode = 404
-        const message = {
-            error: "Not Found",
-            message: "This request route does not exist."
-        }
-        res.end(JSON.stringify(message))
-    }
-});                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+//     if(urlObj.pathname.startsWith('/api') && req.method === "GET" ){
+//         res.setHeader("Content-Type", "application/json");
+//         res.setHeader('Access-Control-Allow-Origin', '*')
+//         res.setHeader('Access-Control-Allow-Methods', 'GET')
+//         const filePath = path.join(__dirname,'../Login/login.html');
+//             fs.readFile(filePath, (err, content) => {
+//                 if (err) {
+//                     res.writeHead(500, { "Content-Type": "text/plain" });
+//                     res.end("Server Error: Could not read the HTML file.");
+//                 } else {
+//                     res.writeHead(200, { "Content-Type": "text/html" });
+//                     res.end(content);
+//                 }
+//             });
+//         res.statusCode = 200;
+//         res.end();
+//     }
+//     else{
+//         res.setHeader("Content-Type", "application/json");
+//         res.statusCode = 404
+//         const message = {
+//             error: "Not Found",
+//             message: "This request route does not exist."
+//         }
+//         res.end(JSON.stringify(message))
+//     }
+// });                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
 
 
 // server.listen(PORT,()=>{
@@ -65,7 +66,7 @@ const server = http.createServer((req, res) => {
         //         res.end(content);
         //     }
         // });
-        res.setHeader(200, { "Content-Type": "application/json" });
+        res.writeHead(200, { "Content-Type": "application/json" });
         return res.end(JSON.stringify({ message: "API is working!" }));
     } 
     if ((urlObj.pathname.startsWith('/') || urlObj.pathname.startsWith('/login')) && req.method === "GET") {
