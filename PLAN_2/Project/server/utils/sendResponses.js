@@ -6,10 +6,10 @@ export default function sendResponses(res, filePath){
     fs.readFile(filePath,(err,content)=>{
         if(err){
             if(err.code === 'ENOENT'){
-                res.setHeader(404,{"Content-Type":"application/json"});
+                res.writeHead(404,{"Content-Type":"application/json"});
                 res.end(JSON.stringify({ error: "Not Found", message: "File does not exist." }))
             }else{
-                res.setHeader(500,{"Content-Type": "text/plain"});
+                res.writeHead(500,{"Content-Type": "text/plain"});
                 res.end(`Server Error: ${err.code}`);
             }
         }else{
