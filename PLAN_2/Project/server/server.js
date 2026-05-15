@@ -55,6 +55,8 @@ const PUBLIC_DIR = path.join(__dirname, '..','public');
 
 // The Server Bigins Here-------------------------------
 
+// Manual Routing Set, Rather Than Express😭😭😭😭😭😭😭😭😭😭😭😭
+
 const server = http.createServer((req, res) => {
     const urlObj = new URL(req.url, `http://${req.headers.host}`);
     
