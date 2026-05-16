@@ -6,7 +6,7 @@ import sendResponses from './utils/sendResponses.js'
 import getContentType from './utils/getContentType.js';
 const PORT = 8000;
 
-
+// Delete Line 55 and 140 To Start the Server Here!!!!!!!!!!!!!!!!!!
 
 // const server = http.createServer(async (req,res)=>{
     
@@ -51,7 +51,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Project Root DR
-const PUBLIC_DIR = path.join(__dirname, '..','public');
+// const PUBLIC_DIR = path.join(__dirname, '..','public');  UN-Comment this out if you want to run this Without Versal!!!!!!!!!!!!
+const PUBLIC_DIR = path.join(__dirname, 'public');
 
 // The Server Bigins Here-------------------------------
 
@@ -128,7 +129,6 @@ const server = http.createServer((req, res) => {
     // });
     sendResponses(res, filePath);
 });
-// >>>>>>> parent of 0ca845d (The Server is Finnaly fuckin working and Now Ready to finalize evrything, Since Everything is tested and working efficiently.)
 
 
 server.listen(PORT,()=>{
@@ -137,4 +137,4 @@ server.listen(PORT,()=>{
 
 })
 
-// >>>>>>> parent of 0ca845d (The Server is Finnaly fuckin working and Now Ready to finalize evrything, Since Everything is tested and working efficiently.)
+export default server;  // Delete this Line Toooooooooooooooooo if Running without Vercel!!!!!!!!!!
