@@ -14,7 +14,8 @@ export default function getContentType(filePath) {
         ".jpg": "image/jpeg",
         ".jpeg": "image/jpeg",
         ".gif": "image/gif",
-        ".svg": "image/svg+xml"
+        ".svg": "image/svg+xml",
+        ".mp4": "video/mp4"
     };
     
     // Return the correct type, or default to a generic download
